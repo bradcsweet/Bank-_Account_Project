@@ -8,9 +8,9 @@ namespace Bank_Account_Project
 {
     class Client : Accounts
     {
-        public string clientName;
-        public int savingsAcctNumber;
-        public int checkingAcctNumber;
+        public string clientName = "Balthazar Runze";
+        public int savingsAcctNumber = 0912093091;
+        public int checkingAcctNumber = 0912390344;
 
         public string ClientName 
         {
@@ -39,6 +39,12 @@ namespace Bank_Account_Project
             this.checkingAcctNumber = checkingAcctNumber;
         }
 
+        public void ClientInfo()
+        {
+            Console.WriteLine("Name on account: " +clientName);
+            Console.WriteLine("\nSavings account number: " + savingsAcctNumber);
+            Console.WriteLine("\nChecking account number: " + checkingAcctNumber);
+        }
         
 
 
