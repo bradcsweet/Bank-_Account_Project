@@ -28,7 +28,7 @@ namespace Bank_Account_Project
                     Client oneClient = new Client();
                     oneClient.ClientInfo();
 
-                    Console.WriteLine("Go BACK or EXIT?");
+                    Console.WriteLine("\nGo BACK or EXIT?");
                     userExit = Console.ReadLine().ToUpper();
                     if (userExit == "EXIT")
                     {
@@ -81,13 +81,13 @@ namespace Bank_Account_Project
                     {
                         Checking newDeposit = new Checking(userDeposit, 0);
 
-                        Console.WriteLine("Your new balance is " + newDeposit.Deposit());
+                        Console.WriteLine("Your current balance is " + newDeposit.Deposit());
                         
                     }
                     else if (accountChoice == "b")
                     {
                         Savings newDeposit = new Savings(userDeposit, 0);
-                        Console.WriteLine("Your new balance is " + newDeposit.Deposit());
+                        Console.WriteLine("Your current balance is " + newDeposit.Deposit());
                     }
 
                     Console.WriteLine("\nGo BACK or EXIT?");
@@ -122,7 +122,7 @@ namespace Bank_Account_Project
                     {
                         Savings newWithdraw = new Savings(0, userWithdraw);
                         
-                        Console.WriteLine("Your current balance is " + newWithdraw.Withdraw());
+                        Console.WriteLine("Your current balance is " + newWithdraw.WithdrawWithMinimum());
                     }
 
 

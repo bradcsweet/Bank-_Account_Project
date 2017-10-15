@@ -30,7 +30,7 @@ namespace Bank_Account_Project
             return savingsBalance += depositAmount;
         }
 
-        public override double Withdraw()
+        public override double WithdrawWithMinimum()
         {
             double newWithdrawAmount;
             if ((savingsBalance - withdrawAmount) < accountMinBalance)

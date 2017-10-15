@@ -8,10 +8,7 @@ namespace Bank_Account_Project
 {
     class Checking : Accounts
     {
-
-
-
-
+        
         public Checking()
         {
         }

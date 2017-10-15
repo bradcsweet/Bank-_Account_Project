@@ -9,7 +9,7 @@ namespace Bank_Account_Project
 {
     abstract class Accounts
     {
-        
+
         protected string acctType;
         protected static double checkingBalance = 567.45;
         protected static double savingsBalance = 1243.22;
@@ -17,18 +17,18 @@ namespace Bank_Account_Project
         protected double depositAmount;
         protected double withdrawAmount;
         protected int accountMinBalance = 200;
-        
+
         public double DepositAmount
         {
             get { return this.depositAmount; }
             set { this.depositAmount = value; }
         }
-        
+
         public double WithdrawAmount
         {
             get { return this.withdrawAmount; }
             set { this.withdrawAmount = value; }
-        }       
+        }
 
 
 
@@ -37,13 +37,13 @@ namespace Bank_Account_Project
 
         }
 
-        
+
 
         //Methods
 
         public virtual string TotalBalance()
         {
-           return "This " + acctType + " Account has: $" + totalBalance;
+            return "This " + acctType + " Account has: $" + totalBalance;
         }
 
         public virtual double Deposit()
@@ -53,23 +53,25 @@ namespace Bank_Account_Project
 
         public virtual double Withdraw()
         {
-            do
-            {
-                if ((totalBalance - withdrawAmount) >= accountMinBalance)
-                {
-                    return totalBalance -= withdrawAmount;
-                }
-                else
-                {
-                    Console.WriteLine("Your account will be below minimum balance.");
-                    Console.WriteLine("You can withdraw up to: $" + (totalBalance - accountMinBalance) + " at this time.");
-                    Console.WriteLine("Please enter a new withdrawal ammount less than: $");
-                    return totalBalance - accountMinBalance;
-                }
-                
-            } while (totalBalance < accountMinBalance);
+            return checkingBalance -= withdrawAmount;
         }
 
-
+        public virtual double WithdrawWithMinimum()
+        {
+            double newWithdrawAmount;
+            if ((totalBalance - withdrawAmount) < accountMinBalance)
+            {
+                do
+                {
+                    Console.WriteLine("Your account will be below minimum balance of $200.");
+                    Console.WriteLine("You can only withdraw up to: $" + (totalBalance - accountMinBalance) + " at this time.");
+                    Console.WriteLine("Enter a new withdraw amount");
+                    newWithdrawAmount = double.Parse(Console.ReadLine());
+                } while (newWithdrawAmount >= totalBalance - accountMinBalance);
+                return totalBalance -= newWithdrawAmount;
+            }
+            else
+                return totalBalance -= withdrawAmount;
+        }
     }
 }
