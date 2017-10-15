@@ -111,22 +111,31 @@ namespace Bank_Account_Project
                     string accountChoice = Console.ReadLine().ToLower();
 
                     Console.WriteLine("Enter the amount to Withdraw");
-                    double userDeposit = double.Parse(Console.ReadLine());
+                    double userWithdraw = double.Parse(Console.ReadLine());
 
                     if (accountChoice == "a")
                     {
-                        Checking newDeposit = new Checking(userDeposit, 0);
-
-                        Console.WriteLine("Your new balance is " + newDeposit.Deposit());
-
+                        Checking newWithdraw = new Checking(0, userWithdraw);
+                        Console.WriteLine("Your current balance is " + newWithdraw.Withdraw());
                     }
                     else if (accountChoice == "b")
                     {
-                        Savings newDeposit = new Savings(userDeposit, 0);
-                        Console.WriteLine("Your new balance is " + newDeposit.Deposit());
+                        Savings newWithdraw = new Savings(0, userWithdraw);
+                        
+                        Console.WriteLine("Your current balance is " + newWithdraw.Withdraw());
                     }
 
 
+                    Console.WriteLine("\nGo BACK or EXIT?");
+                    userExit = Console.ReadLine().ToUpper();
+                    if (userExit == "EXIT")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        userExit = "NO";
+                    }
 
 
                 }

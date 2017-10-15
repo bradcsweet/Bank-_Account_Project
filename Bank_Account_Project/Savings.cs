@@ -16,7 +16,7 @@ namespace Bank_Account_Project
         public Savings(double depositAmount, double withdrawAmount)
         {
             this.depositAmount = depositAmount;
-            this.withdrawAmount = withdrawAmount; 
+            this.withdrawAmount = withdrawAmount;
         }
 
 
@@ -30,21 +30,23 @@ namespace Bank_Account_Project
             return savingsBalance += depositAmount;
         }
 
-        public override void Withdraw()
+        public override double Withdraw()
         {
-            do
+            double newWithdrawAmount;
+            if ((savingsBalance - withdrawAmount) < accountMinBalance)
             {
-                if ((savingsBalance - withdrawAmount) >= accountMinBalance)
+                do
                 {
-                    savingsBalance -= withdrawAmount;
-                }
-                else
-                {
-                    Console.WriteLine("Your account will be below minimum balance.");
-                    Console.WriteLine("You can withdraw up to: $" + (savingsBalance - accountMinBalance) + " at this time.");
-                    Console.WriteLine("Please enter a new withdrawal ammount.");
-                }
-            } while (savingsBalance < accountMinBalance);
+                    Console.WriteLine("Your account will be below minimum balance of $200.");
+                    Console.WriteLine("You can only withdraw up to: $" + (savingsBalance - accountMinBalance) + " at this time.");
+                    Console.WriteLine("Enter a new withdraw amount");
+                    newWithdrawAmount = double.Parse(Console.ReadLine());
+                } while (newWithdrawAmount >= savingsBalance - accountMinBalance);
+                return savingsBalance -= newWithdrawAmount;
+            }
+            else
+                return savingsBalance -= withdrawAmount;
         }
+
     }
 }

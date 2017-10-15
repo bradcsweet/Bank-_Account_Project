@@ -51,20 +51,22 @@ namespace Bank_Account_Project
             return totalBalance += depositAmount;
         }
 
-        public virtual void Withdraw()
+        public virtual double Withdraw()
         {
             do
             {
                 if ((totalBalance - withdrawAmount) >= accountMinBalance)
                 {
-                    totalBalance -= withdrawAmount;
+                    return totalBalance -= withdrawAmount;
                 }
                 else
                 {
                     Console.WriteLine("Your account will be below minimum balance.");
                     Console.WriteLine("You can withdraw up to: $" + (totalBalance - accountMinBalance) + " at this time.");
-                    Console.WriteLine("Please enter a new withdrawal ammount.");
+                    Console.WriteLine("Please enter a new withdrawal ammount less than: $");
+                    return totalBalance - accountMinBalance;
                 }
+                
             } while (totalBalance < accountMinBalance);
         }
 

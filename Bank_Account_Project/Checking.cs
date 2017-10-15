@@ -37,21 +37,9 @@ namespace Bank_Account_Project
             return checkingBalance += depositAmount;
         }
 
-        public override void Withdraw()
+        public override double Withdraw()
         {
-            do
-            {
-                if ((checkingBalance - withdrawAmount) >= accountMinBalance)
-                {
-                    checkingBalance -= withdrawAmount;
-                }
-                else
-                {
-                    Console.WriteLine("Your account will be below minimum balance.");
-                    Console.WriteLine("You can withdraw up to: $" + (checkingBalance - accountMinBalance) + " at this time.");
-                    Console.WriteLine("Please enter a new withdrawal ammount.");
-                }
-            } while (checkingBalance < accountMinBalance);
+            return checkingBalance -= withdrawAmount;
         }
 
     }
