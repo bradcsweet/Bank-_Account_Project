@@ -8,9 +8,10 @@ namespace Bank_Account_Project
 {
     class Client : Accounts
     {
-        public string clientName = "Balthazar Runze";
-        public int savingsAcctNumber = 0912093091;
-        public int checkingAcctNumber = 0912390344;
+        private string clientName = "Balthazar Runze";
+        private int savingsAcctNumber = 0912093091;
+        private int checkingAcctNumber = 0912390344;
+        
 
         public string ClientName 
         {
