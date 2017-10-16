@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bank_Account_Project
 {
-    class Checking : Accounts
+    class Checking : Client
     {
-        
+        //constructors
         public Checking()
         {
         }
@@ -18,22 +18,22 @@ namespace Bank_Account_Project
             this.depositAmount = depositAmount;
             this.withdrawAmount = withdrawAmount;
         }
-
-
-
-
+        
         //methods
+        //menuchoice 2
         public override string TotalBalance()
         {
             acctType = "Checking";
-            return "This " + acctType + " Account has: $" + checkingBalance;
+            return "\nThis " + acctType + " Account has: $" + checkingBalance;
         }
 
+        //menuchoice 3
         public override double Deposit()
         {
             return checkingBalance += depositAmount;
         }
 
+        //menuchoice 4
         public override double Withdraw()
         {
             return checkingBalance -= withdrawAmount;

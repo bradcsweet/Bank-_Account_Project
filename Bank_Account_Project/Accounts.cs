@@ -9,15 +9,14 @@ namespace Bank_Account_Project
 {
     abstract class Accounts
     {
-
+        //A few hardcoded values for balances and savings account minimum balance requirement
         protected string acctType;
-        protected static double checkingBalance = 567.45;
-        protected static double savingsBalance = 1243.22;
         protected static double totalBalance;
         protected double depositAmount;
         protected double withdrawAmount;
         protected int accountMinBalance = 200;
 
+        //properties
         public double DepositAmount
         {
             get { return this.depositAmount; }
@@ -29,23 +28,20 @@ namespace Bank_Account_Project
             get { return this.withdrawAmount; }
             set { this.withdrawAmount = value; }
         }
-
-
-
+        
+        //default constructor
         public Accounts()
         {
-
         }
 
-
-
-        //Methods
+        //Base Methods used in child classes and one abstract
+        public abstract void ClientInfo();
 
         public virtual string TotalBalance()
         {
             return "This " + acctType + " Account has: $" + totalBalance;
         }
-
+        
         public virtual double Deposit()
         {
             return totalBalance += depositAmount;
@@ -53,7 +49,7 @@ namespace Bank_Account_Project
 
         public virtual double Withdraw()
         {
-            return checkingBalance -= withdrawAmount;
+            return totalBalance -= withdrawAmount;
         }
 
         public virtual double WithdrawWithMinimum()
@@ -65,7 +61,7 @@ namespace Bank_Account_Project
                 {
                     Console.WriteLine("Your account will be below minimum balance of $200.");
                     Console.WriteLine("You can only withdraw up to: $" + (totalBalance - accountMinBalance) + " at this time.");
-                    Console.WriteLine("Enter a new withdraw amount");
+                    Console.WriteLine("Enter a new withdraw amount\n");
                     newWithdrawAmount = double.Parse(Console.ReadLine());
                 } while (newWithdrawAmount >= totalBalance - accountMinBalance);
                 return totalBalance -= newWithdrawAmount;
